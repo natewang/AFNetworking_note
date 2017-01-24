@@ -626,15 +626,18 @@ AFNetworking常驻线程，设置名称
 
 #pragma mark - NSURLConnectionDelegate
 
+//网络验证
 - (void)connection:(NSURLConnection *)connection
 willSendRequestForAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge
 {
+    //如果有使用block，使用block
     if (self.authenticationChallenge) {
         self.authenticationChallenge(connection, challenge);
         return;
     }
-
+    //https认证
     if ([challenge.protectionSpace.authenticationMethod isEqualToString:NSURLAuthenticationMethodServerTrust]) {
+       // 认证
         if ([self.securityPolicy evaluateServerTrust:challenge.protectionSpace.serverTrust forDomain:challenge.protectionSpace.host]) {
             NSURLCredential *credential = [NSURLCredential credentialForTrust:challenge.protectionSpace.serverTrust];
             [[challenge sender] useCredential:credential forAuthenticationChallenge:challenge];
@@ -658,6 +661,7 @@ willSendRequestForAuthenticationChallenge:(NSURLAuthenticationChallenge *)challe
     return self.shouldUseCredentialStorage;
 }
 
+//转向
 - (NSURLRequest *)connection:(NSURLConnection *)connection
              willSendRequest:(NSURLRequest *)request
             redirectResponse:(NSURLResponse *)redirectResponse

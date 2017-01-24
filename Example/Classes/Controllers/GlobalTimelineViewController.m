@@ -45,6 +45,19 @@
         }
     }];
 
+//    [Post globalTimelinePostsWithBlock:nil];
+//    [Post globalTimelinePostsWithBlock:nil];
+//    [Post globalTimelinePostsWithBlock:nil];
+//    [Post globalTimelinePostsWithBlock:nil];
+//    [Post globalTimelinePostsWithBlock:nil];
+//    [Post globalTimelinePostsWithBlock:nil];
+//    [Post globalTimelinePostsWithBlock:nil];
+//    [Post globalTimelinePostsWithBlock:nil];
+//    [Post globalTimelinePostsWithBlock:nil];
+//    [Post globalTimelinePostsWithBlock:nil];
+
+    
+    
     [UIAlertView showAlertViewForTaskWithErrorOnCompletion:task delegate:nil];
     [self.refreshControl setRefreshingWithStateOfTask:task];
 }
